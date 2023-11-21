@@ -67,8 +67,6 @@ class ParallaxSprite extends FlxSprite
 	public function fixate(anchorX:Int = 0, anchorY:Int = 0, scrollOneX:Float = 1, scrollOneY:Float = 1, scrollTwoX:Float = 1.1, scrollTwoY:Float = 1.1,
 			direct:String = 'horizontal'):ParallaxSprite
 	{
-		pointOne.scrollFactor.set(1, 1);
-		pointTwo.scrollFactor.set(1, 1);
 		pointOne.setPosition(anchorX + x, anchorY + y);
 
 		switch (direct.toLowerCase())
@@ -147,6 +145,8 @@ class ParallaxSprite extends FlxSprite
 			_point.floor();
 		_matrix.tx += _point.x;
 		_matrix.ty += _point.y;
+		
+		_matrix.scale(scale.x, scale.y);
 
 		camera.drawPixels(_frame, framePixels, _matrix, colorTransform, blend, antialiasing, shader);
 	}
